@@ -6,9 +6,10 @@ def hsl_to_hex(h, s, l):
     r, g, b = colorsys.hls_to_rgb(h / 360, l / 100, s / 100)
     return f"#{int(r*255):02x}{int(g*255):02x}{int(b*255):02x}"
 
-pink = hsl_to_hex(311, 100, 50)
+pink = hsl_to_hex(195, 100, 60)
 green = hsl_to_hex(126, 100, 41)
 white = "#ffffff"
+black = "#000000"
 
 categories = ["Direct", "Transitive"]
 bloated =  [29.9, 78.3]
@@ -30,14 +31,14 @@ for i, cat in enumerate(categories):
             edgecolor=white, linewidth=0.8)
     if bloated[i] > 4:
         ax.text(left + bloated[i] / 2, y, f"{bloated[i]}%",
-                ha="center", va="center", color="white", fontsize=10, fontweight="bold")
+                ha="center", va="center", color="black", fontsize=10, fontweight="bold")
     left += bloated[i]
 
     ax.barh(y, used[i], height=bar_height, left=left, color=green,
             edgecolor=white, linewidth=0.8)
     if used[i] > 4:
         ax.text(left + used[i] / 2, y, f"{used[i]}%",
-                ha="center", va="center", color="white", fontsize=10, fontweight="bold")
+                ha="center", va="center", color="black", fontsize=10, fontweight="bold")
     left += used[i]
 
     ax.barh(y, others[i], height=bar_height, left=left, color=white,
